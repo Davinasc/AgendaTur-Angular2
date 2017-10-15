@@ -18,6 +18,6 @@ import { GuideListComponent } from './guide-list/guide-list.component';
     GuideComponent,
     GuideFormComponent,
     GuideListComponent,
-  ]
+  ],
 })
 export class GuideModule { }

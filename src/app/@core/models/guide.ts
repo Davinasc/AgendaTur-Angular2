@@ -1,4 +1,4 @@
 import { User } from './user';
-export class Guide extends User{
+export class Guide extends User {
   comission: string;
 }

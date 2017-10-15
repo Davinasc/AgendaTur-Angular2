@@ -1,15 +1,15 @@
 export class User {
-	id: number;
-	admin: boolean;
-	user_type: string;
-	name: string;
+  id: number;
+  admin: boolean;
+  user_type: string;
+  name: string;
   email: string;
   password: string;
-	nickname: string;
-	uid: string;
-	provider: string;
-	image: string;
-	created_at: string;
-	updated_at: string;
-	deleted_at: string;
+  nickname: string;
+  uid: string;
+  provider: string;
+  image: string;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string;
 }

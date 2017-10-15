@@ -16,6 +16,6 @@ const COMPONENTS = [
 @NgModule({
   imports: [...BASE_MODULES],
   declarations: [...COMPONENTS],
-  exports: [...BASE_MODULES, ...COMPONENTS]
+  exports: [...BASE_MODULES, ...COMPONENTS],
 })
 export class BaseFormModule { }

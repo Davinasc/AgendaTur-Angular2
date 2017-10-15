@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'base-form',
+  selector: 'ngx-base-form',
   templateUrl: './base-form.component.html',
-  styleUrls: ['./base-form.component.scss']
+  styleUrls: ['./base-form.component.scss'],
 })
 export class BaseFormComponent implements OnInit {
 
@@ -26,14 +26,13 @@ export class BaseFormComponent implements OnInit {
   aplicaCssErro(campo: string) {
     return {
       'has-error': this.verificaValidTouched(campo),
-      'has-feedback': this.verificaValidTouched(campo)
+      'has-feedback': this.verificaValidTouched(campo),
     };
   }
 
   verificaValidacoesForm(formGroup: FormGroup) {
-    let controlesForm = Object.keys(formGroup.controls);
+    const controlesForm = Object.keys(formGroup.controls);
     controlesForm.forEach(campo => {
-      console.log(campo);
       const controle = formGroup.get(campo);
       controle.markAsDirty();
       if (controle instanceof FormGroup) {

@@ -6,9 +6,9 @@ import 'rxjs/add/operator/map';
 import { BaseFormComponent } from './../../forms/base-form/base-form.component';
 
 @Component({
-  selector: 'guide-form',
+  selector: 'ngx-guide-form',
   templateUrl: './guide-form.component.html',
-  styleUrls: ['./guide-form.component.scss']
+  styleUrls: ['./guide-form.component.scss'],
 })
 export class GuideFormComponent extends BaseFormComponent implements OnInit {
 
@@ -17,7 +17,7 @@ export class GuideFormComponent extends BaseFormComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) { super();
  }
 
@@ -36,8 +36,8 @@ export class GuideFormComponent extends BaseFormComponent implements OnInit {
         rua: [null, Validators.required],
         bairro: [null, Validators.required],
         cidade: [null, Validators.required],
-        estado: [null, Validators.required]
-      })
+        estado: [null, Validators.required],
+      }),
     });
   }
 
