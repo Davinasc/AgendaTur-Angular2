@@ -8,25 +8,23 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class BaseFormComponent implements OnInit {
 
-  form: FormGroup;
-
-  constructor() { }
+  constructor(protected fb: FormBuilder,) { }
 
   ngOnInit() {
   }
 
-  resetarForm() {
-    this.form.reset();
+  resetarForm(form: FormGroup) {
+    form.reset();
   }
 
-  verificaValidTouched(campo: string) {
-    return !this.form.get(campo).valid && ( this.form.get(campo).touched || this.form.get(campo).dirty );
+  verificaValidTouched(form: FormGroup, campo) {
+    return !form.get(campo).valid && ( form.get(campo).touched || form.get(campo).dirty );
   }
 
-  aplicaCssErro(campo: string) {
+  aplicaCssErro(form: FormGroup, campo: string) {
     return {
-      'has-error': this.verificaValidTouched(campo),
-      'has-feedback': this.verificaValidTouched(campo),
+      'has-error': this.verificaValidTouched(form, campo),
+      'has-feedback': this.verificaValidTouched(form, campo),
     };
   }
 
@@ -39,6 +37,14 @@ export class BaseFormComponent implements OnInit {
         this.verificaValidacoesForm(controle);
       }
     });
+  }
+
+  criarUserForm(form: FormGroup) {
+    form = this.fb.group({
+      name: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+    });
+    return form;
   }
 
 }

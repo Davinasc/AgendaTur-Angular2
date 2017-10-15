@@ -12,32 +12,30 @@ import { BaseFormComponent } from './../../forms/base-form/base-form.component';
 })
 export class GuideFormComponent extends BaseFormComponent implements OnInit {
 
-  guide: Guide;
+  guide: Guide = new Guide();
+  guideForm: FormGroup;
 
-  form: FormGroup;
-
-  constructor(
-    private formBuilder: FormBuilder,
-  ) { super();
- }
-
-  ngOnInit() {
-    this.inicializarForm();
+  constructor(protected fb: FormBuilder,) {
+    super(fb);
   }
 
-  inicializarForm() {
-    this.form = this.formBuilder.group({
-      nome: [null, Validators.required],
-      email: [null, [Validators.required, Validators.email]],
-      endereco: this.formBuilder.group({
-        cep: [null, Validators.required],
-        num: [null, Validators.required],
-        complemento: [null],
-        rua: [null, Validators.required],
-        bairro: [null, Validators.required],
-        cidade: [null, Validators.required],
-        estado: [null, Validators.required],
-      }),
+  ngOnInit() {
+    this.criarGuideForm();
+    this.iniciarForm();
+  }
+
+  criarGuideForm() {
+    this.guideForm = super.criarUserForm(this.guideForm);
+    this.guideForm.addControl(
+      'qualification',
+      new FormControl(null, Validators.required));
+  }
+
+  iniciarForm() {
+    this.guideForm.patchValue({
+      name: this.guide.name,
+      email: this.guide.email,
+      qualification: this.guide.qualification,
     });
   }
 
