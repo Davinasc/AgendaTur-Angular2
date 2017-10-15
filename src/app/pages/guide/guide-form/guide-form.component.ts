@@ -1,9 +1,10 @@
-import { Guide } from './../../../@core/models/guide';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
 import { BaseFormComponent } from './../../forms/base-form/base-form.component';
+
+import { Guide } from './../../../@core/models/guide';
 
 @Component({
   selector: 'ngx-guide-form',
@@ -15,7 +16,7 @@ export class GuideFormComponent extends BaseFormComponent implements OnInit {
   guide: Guide = new Guide();
   guideForm: FormGroup;
 
-  constructor(protected fb: FormBuilder,) {
+  constructor(protected fb: FormBuilder) {
     super(fb);
   }
 

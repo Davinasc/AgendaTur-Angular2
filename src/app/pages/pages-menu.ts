@@ -14,11 +14,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Vendedores',
     icon: 'ion-ios-people-outline',
-    link: '/pages/ui-features',
     children: [
       {
         title: 'Adicionar novo',
-        link: '#',
+        link: '/pages/vendedores/novo',
       },
       {
         title: 'Ver todos',
@@ -32,11 +31,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Adicionar novo',
-        link: '/pages/guides/novo',
+        link: '/pages/guias/novo',
       },
       {
         title: 'Ver todos',
-        link: '/pages/guides/todos',
+        link: '/pages/guias/todos',
       },
     ],
   },

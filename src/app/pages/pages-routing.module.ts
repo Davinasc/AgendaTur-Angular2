@@ -11,8 +11,11 @@ const routes: Routes = [{
     path: 'dashboard',
     component: DashboardComponent,
   }, {
-    path: 'guides',
+    path: 'guias',
     loadChildren: './guide/guide.module#GuideModule',
+  }, {
+    path: 'vendedores',
+    loadChildren: './salesman/salesman.module#SalesmanModule',
   }, {
     path: '',
     redirectTo: 'dashboard',

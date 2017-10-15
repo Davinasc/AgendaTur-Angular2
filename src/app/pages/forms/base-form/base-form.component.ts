@@ -8,7 +8,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class BaseFormComponent implements OnInit {
 
-  constructor(protected fb: FormBuilder,) { }
+  constructor(protected fb: FormBuilder) {  }
 
   ngOnInit() {
   }
