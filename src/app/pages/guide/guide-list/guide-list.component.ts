@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NbThemeService, NbMediaBreakpoint, NbMediaBreakpointsService } from '@nebular/theme';
+
+import { UserService } from '../../../@core/data/users.service';
 
 @Component({
   selector: 'ngx-guide-list',
@@ -9,7 +12,7 @@ export class GuideListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

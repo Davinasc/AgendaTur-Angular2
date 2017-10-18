@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
-import { BaseFormComponent } from './../../forms/base-form/base-form.component';
+import { BaseFormComponent } from './../../base/base-form/base-form.component';
 
 import { Guide } from './../../../@core/models/guide';
 
@@ -36,6 +36,7 @@ export class GuideFormComponent extends BaseFormComponent implements OnInit {
     this.guideForm.patchValue({
       name: this.guide.name,
       email: this.guide.email,
+      phone: this.guide.phone,
       qualification: this.guide.qualification,
     });
   }

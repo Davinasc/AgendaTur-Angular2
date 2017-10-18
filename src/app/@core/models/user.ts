@@ -6,9 +6,11 @@ export class User {
   email: string;
   password: string;
   nickname: string;
+  phone: string;
+  image: string;
+
   uid: string;
   provider: string;
-  image: string;
   created_at: string;
   updated_at: string;
   deleted_at: string;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
-import { BaseFormComponent } from './../../forms/base-form/base-form.component';
+import { BaseFormComponent } from './../../base/base-form/base-form.component';
 
 import { Salesman } from './../../../@core/models/salesman';
 
@@ -36,6 +36,7 @@ export class SalesmanFormComponent extends BaseFormComponent implements OnInit {
     this.salesmanForm.patchValue({
       name: this.salesman.name,
       email: this.salesman.email,
+      phone: this.salesman.phone,
       comission: this.salesman.comission,
     });
   }

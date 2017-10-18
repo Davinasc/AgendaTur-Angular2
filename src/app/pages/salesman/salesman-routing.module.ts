@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SalesmanComponent } from './salesman.component';
 import { SalesmanFormComponent } from './salesman-form/salesman-form.component';
+import { SalesmanListComponent } from './salesman-list/salesman-list.component';
 
 const routes: Routes = [{
   path: '',
@@ -12,7 +13,7 @@ const routes: Routes = [{
     component: SalesmanFormComponent,
   }, {
     path: 'todos',
-    // component: ,
+    component: SalesmanListComponent,
   }],
 }];
 

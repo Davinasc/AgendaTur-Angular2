@@ -21,13 +21,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Ver todos',
-        link: '#',
+        link: '/pages/vendedores/todos',
       },
     ],
   },
   {
     title: 'Guias',
-    icon: 'ion-ios-flag-outline',
+    icon: 'ion-person-stalker',
     children: [
       {
         title: 'Adicionar novo',

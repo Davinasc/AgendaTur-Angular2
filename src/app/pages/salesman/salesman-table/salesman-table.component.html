@@ -1,0 +1,13 @@
+<nb-card>
+    <nb-card-header>
+      <h3>
+        <i class="tittle-icon ion-ios-people text-hint" style="font-size: 2.5rem;"></i>
+        Vendedores
+      </h3>
+    </nb-card-header>
+
+    <nb-card-body>
+      <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>
