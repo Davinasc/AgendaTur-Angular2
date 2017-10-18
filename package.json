@@ -9,7 +9,7 @@
     "ng": "ng",
     "start:hmr": "ng serve --hmr",
     "start:aot": "ng serve --aot",
-    "build": "ng build",
+    "build": "rimraf dist && ng build",
     "build:prod": "npm run build -- --prod",
     "build:prod:aot": "npm run build:prod -- --aot",
     "build:ci": "npm-run-all -p -r build:prod build:prod:aot",
@@ -26,8 +26,6 @@
     "start": "node Server.js"
   },
   "dependencies": {
-    "@angular/cli": "1.2.6",
-    "@angular/compiler-cli": "4.3.2",
     "@agm/core": "1.0.0-beta.0",
     "@angular/animations": "4.3.2",
     "@angular/common": "4.3.2",
@@ -69,18 +67,25 @@
     "tinymce": "4.5.7",
     "typeface-exo": "0.0.22",
     "web-animations-js": "2.2.5",
-    "zone.js": "0.8.16"
+    "zone.js": "0.8.16",
+
+    "@angular/cli": "1.2.6",
+    "@angular/compiler-cli": "4.3.2",
+    "@angular/language-service": "4.3.2",
+    "@types/node": "8.0.44",
+    "husky": "0.13.3",
+    "npm-run-all": "4.0.2",
+    "rimraf": "2.6.1",
+    "ts-node": "3.0.4"
   },
   "devDependencies": {
-    "@angular/language-service": "4.3.2",
     "@types/d3-color": "1.0.4",
     "@types/jasmine": "2.5.38",
     "@types/jasminewd2": "2.0.2",
     "@types/leaflet": "1.0.60",
-    "@types/node": "6.0.74",
     "angular-cli-ghpages": "0.5.0",
     "codelyzer": "3.0.1",
-    "husky": "0.13.3",
+
     "jasmine-core": "2.6.2",
     "jasmine-spec-reporter": "4.1.0",
     "karma": "1.7.0",
@@ -89,11 +94,11 @@
     "karma-coverage-istanbul-reporter": "1.3.0",
     "karma-jasmine": "1.1.0",
     "karma-jasmine-html-reporter": "0.2.2",
-    "npm-run-all": "4.0.2",
+
     "protractor": "5.1.2",
-    "rimraf": "2.6.1",
+
     "stylelint": "7.13.0",
-    "ts-node": "3.0.4",
+
     "tslint": "5.4.2",
     "tslint-language-service": "0.9.6",
     "typescript": "2.3.4"
