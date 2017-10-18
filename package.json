@@ -1,7 +1,10 @@
 {
-  "name": "ngx-admin",
-  "version": "2.0.0",
-  "license": "MIT",
+  "name": "agendatur",
+  "description": "admin angular 4 app",
+  "version": "1.0",
+  "engines": {
+    "node": "8.6.0"
+  },
   "scripts": {
     "ng": "ng",
     "start:hmr": "ng serve --hmr",
