@@ -24,6 +24,7 @@
     "e2e": "ng e2e",
     "prepush": "npm run lint:ci",
 
+    "clean:dist": "npm run clean:dist",
     "postinstall": "npm run clean:dist && webpack --config config/webpack.prod.js --progress --profile --colors --display-error-details --display-cached --bail"
   },
   "dependencies": {
