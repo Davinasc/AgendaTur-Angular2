@@ -21,7 +21,7 @@ export class GuideService {
         (response: Response) => {
           const data = response.json();
           return data;
-        }
+        },
       )
   }
 

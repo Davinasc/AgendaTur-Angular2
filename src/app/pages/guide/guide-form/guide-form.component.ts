@@ -44,25 +44,25 @@ export class GuideFormComponent extends BaseFormComponent implements OnInit {
 
   prepareSave() {
     this.guide = this.guideForm.value;
-    this.guide.user_type = "guide";
-    this.guide.password = "davi1234";
-    this.guide.provider = "email";
+    this.guide.user_type = 'guide';
+    this.guide.password = 'davi1234';
+    this.guide.provider = 'email';
   }
 
   saveGuide() {
     this.prepareSave();
     this.guideService.save(this.guide)
       .subscribe(
-        (response) => console.log(response),
-        (error) => console.log(error)
+        (response) => response,
+        (error) => error,
       );
   }
 
   getGuides() {
     this.guideService.all()
       .subscribe(
-        (guides: any[]) => console.log(guides),
-        (error) => console.log(error)
+        (guides: any[]) => guides,
+        (error) => error,
       );
   }
 

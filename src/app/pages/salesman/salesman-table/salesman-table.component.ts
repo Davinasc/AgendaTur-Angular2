@@ -64,11 +64,9 @@ export class SalesmanTableComponent {
   constructor(private service: SmartTableService) {
     const data = this.service.getData()
     .subscribe(
-      (salesmen: any[]) => console.log(salesmen),
-      (error) => console.log(error)
+      (salesmen: any[]) => salesmen,
+      (error) => error,
     );
-    console.log(this.salesmen);
-
     this.source.load(this.salesmen);
   }
 

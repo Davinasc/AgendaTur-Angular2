@@ -16,7 +16,7 @@ export class SmartTableService {
         (response: Response) => {
           const data = response.json();
           return data;
-        }
+        },
       )
   }
 }

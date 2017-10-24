@@ -69,7 +69,7 @@ export class GuideTableComponent  {
           this.data = guides;
           this.source.load(this.data);
         },
-        (error) => console.log(error)
+        (error) => error,
       );
   }
 

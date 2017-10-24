@@ -65,7 +65,7 @@ export class SmartTableComponent {
     const data = this.service.getData()
       .subscribe(
         (guides: any[]) => this.guias = guides,
-        (error) => console.log(error)
+        (error) => error,
       );
       this.source.load(this.guias);
   }
