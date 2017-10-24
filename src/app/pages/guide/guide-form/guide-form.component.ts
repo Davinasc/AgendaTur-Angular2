@@ -1,9 +1,10 @@
+import { Response } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import 'rxjs/add/operator/map';
+import 'rxjs/Rx';
 
 import { BaseFormComponent } from './../../base/base-form/base-form.component';
-
+import { GuideService } from './../../../@core/data/guide.service';
 import { Guide } from './../../../@core/models/guide';
 
 @Component({
@@ -16,7 +17,7 @@ export class GuideFormComponent extends BaseFormComponent implements OnInit {
   guide: Guide = new Guide();
   guideForm: FormGroup;
 
-  constructor(protected fb: FormBuilder) {
+  constructor(protected fb: FormBuilder, private guideService: GuideService) {
     super(fb);
   }
 
@@ -39,6 +40,30 @@ export class GuideFormComponent extends BaseFormComponent implements OnInit {
       phone: this.guide.phone,
       qualification: this.guide.qualification,
     });
+  }
+
+  prepareSave() {
+    this.guide = this.guideForm.value;
+    this.guide.user_type = "guide";
+    this.guide.password = "davi1234";
+    this.guide.provider = "email";
+  }
+
+  saveGuide() {
+    this.prepareSave();
+    this.guideService.save(this.guide)
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)
+      );
+  }
+
+  getGuides() {
+    this.guideService.all()
+      .subscribe(
+        (guides: any[]) => console.log(guides),
+        (error) => console.log(error)
+      );
   }
 
 }

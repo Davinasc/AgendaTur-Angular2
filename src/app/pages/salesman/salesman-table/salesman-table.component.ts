@@ -59,10 +59,17 @@ export class SalesmanTableComponent {
   };
 
   source: LocalDataSource = new LocalDataSource();
+  salesmen: any[]
 
   constructor(private service: SmartTableService) {
-    const data = this.service.getData();
-    this.source.load(data);
+    const data = this.service.getData()
+    .subscribe(
+      (salesmen: any[]) => console.log(salesmen),
+      (error) => console.log(error)
+    );
+    console.log(this.salesmen);
+
+    this.source.load(this.salesmen);
   }
 
   onDeleteConfirm(event): void {

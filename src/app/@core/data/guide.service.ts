@@ -5,12 +5,17 @@ import 'rxjs/Rx';
 import { Guide } from './../models/guide';
 
 const url = 'https://agendatur-api.herokuapp.com';
+
 @Injectable()
-export class SmartTableService {
+export class GuideService {
 
   constructor(private http: Http) { }
 
-  getData() {
+  save(guide: Guide) {
+    return this.http.post(`${url}/auth`, guide);
+  }
+
+  all() {
     return this.http.get(`${url}/guides`)
       .map(
         (response: Response) => {
@@ -19,4 +24,5 @@ export class SmartTableService {
         }
       )
   }
+
 }
