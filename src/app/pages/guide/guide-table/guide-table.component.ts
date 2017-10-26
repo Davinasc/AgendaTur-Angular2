@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { LocalDataSource } from 'ng2-smart-table';
 
-import { SmartTableService } from '../../../@core/data/smart-table.service';
+import { GuideService } from './../../../@core/data/guide.service';
 import { Guide } from './../../../@core/models/guide';
 
 @Component({
@@ -59,18 +59,15 @@ export class GuideTableComponent  {
   };
 
   source: LocalDataSource = new LocalDataSource();
-  data = [];
+  guides = [];
 
-  constructor(private service: SmartTableService) {
+  constructor(private guideService: GuideService) {
 
-    this.service.getData()
-      .subscribe(
-        (guides: any[]) => {
-          this.data = guides;
-          this.source.load(this.data);
-        },
-        (error) => error,
-      );
+    this.guideService.list()
+      .subscribe( res => {
+          this.guides = res;
+          this.source.load(this.guides);
+      });
   }
 
   onDeleteConfirm(event): void {

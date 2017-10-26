@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { BaseFormComponent } from './../../base/base-form/base-form.component';
 
 import { Salesman } from './../../../@core/models/salesman';
+import { SalesmanService } from './../../../@core/data/salesman.service';
 
 @Component({
   selector: 'ngx-salesman-form',
@@ -16,7 +17,7 @@ export class SalesmanFormComponent extends BaseFormComponent implements OnInit {
   salesman: Salesman = new Salesman();
   salesmanForm: FormGroup;
 
-  constructor(protected fb: FormBuilder) {
+  constructor(protected fb: FormBuilder, private salesmanService: SalesmanService) {
     super(fb);
   }
 
@@ -41,4 +42,16 @@ export class SalesmanFormComponent extends BaseFormComponent implements OnInit {
     });
   }
 
+  prepareSave() {
+    this.salesman = this.salesmanForm.value;
+    this.salesman.user_type = 'salesman';
+    this.salesman.password = 'davi1234';
+    this.salesman.provider = 'email';
+  }
+
+  saveSalesman() {
+    this.prepareSave();
+    this.salesmanService.save(this.salesman).subscribe(res => res);
+    this.resetarForm(this.salesmanForm);
+  }
 }

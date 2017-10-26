@@ -15,7 +15,7 @@ export class GuideService {
     return this.http.post(`${url}/auth`, guide);
   }
 
-  all() {
+  list() {
     return this.http.get(`${url}/guides`)
       .map(
         (response: Response) => {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { LocalDataSource } from 'ng2-smart-table';
 
-import { SmartTableService } from '../../../@core/data/smart-table.service';
+import { SalesmanService } from './../../../@core/data/salesman.service';
 
 
 @Component({
@@ -61,13 +61,12 @@ export class SalesmanTableComponent {
   source: LocalDataSource = new LocalDataSource();
   salesmen: any[]
 
-  constructor(private service: SmartTableService) {
-    const data = this.service.getData()
-    .subscribe(
-      (salesmen: any[]) => salesmen,
-      (error) => error,
-    );
-    this.source.load(this.salesmen);
+  constructor(private salesmanService: SalesmanService) {
+    this.salesmanService.list()
+    .subscribe( res => {
+        this.salesmen = res;
+        this.source.load(this.salesmen);
+    });
   }
 
   onDeleteConfirm(event): void {
