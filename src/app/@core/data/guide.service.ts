@@ -17,12 +17,7 @@ export class GuideService {
 
   list() {
     return this.http.get(`${url}/guides`)
-      .map(
-        (response: Response) => {
-          const data = response.json();
-          return data;
-        },
-      )
+      .map(res => res.json());
   }
 
 }

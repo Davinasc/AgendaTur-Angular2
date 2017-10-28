@@ -24,9 +24,9 @@
                       </div>
 
                       <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label">Telefone</label>
+                        <label for="phone" class="col-sm-2 col-form-label">Telefone</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" id="name" placeholder="Digite o telefone"
+                          <input type="text" class="form-control" id="phone" placeholder="Digite o telefone"
                           formControlName="phone">
                         </div>
                       </div>
@@ -40,10 +40,8 @@
                       </div>
 
                       <div class="form-group row">
-                        <div class="col-sm-2 offset-sm-2">
+                        <div class="col-lg-12 offset-sm-2">
                           <button type="submit" class="btn btn-hero-success btn-sm" (click)="saveGuide()" >Salvar</button>
-                        </div>
-                        <div class="col-sm-4">
                           <button class="btn btn-hero-secondary btn-sm" (click)="resetarForm(guideForm)" >Cancelar</button>
                         </div>
                       </div>
@@ -51,8 +49,6 @@
                     </div>
                   </div>
                 </form>
-                <p>Form value: {{ guideForm.value | json }}</p>
-                <p>Guide value: {{ guide | json }}</p>
             </nb-card-body>
         </nb-card>
     </div>

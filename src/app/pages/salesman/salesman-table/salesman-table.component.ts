@@ -63,10 +63,10 @@ export class SalesmanTableComponent {
 
   constructor(private salesmanService: SalesmanService) {
     this.salesmanService.list()
-    .subscribe( res => {
-        this.salesmen = res;
+      .subscribe(res => {
+        this.salesmen = res.users;
         this.source.load(this.salesmen);
-    });
+      });
   }
 
   onDeleteConfirm(event): void {

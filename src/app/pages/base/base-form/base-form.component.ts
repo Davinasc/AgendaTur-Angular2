@@ -43,8 +43,7 @@ export class BaseFormComponent implements OnInit {
     form = this.fb.group({
       name: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      phone: [null, [Validators.required],
-    ],
+      phone: [null, [Validators.required]],
     });
     return form;
   }

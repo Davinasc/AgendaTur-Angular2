@@ -6,7 +6,7 @@ import { ThemeModule } from '../@theme/theme.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 import { BaseFormModule } from './base/base-form/base-form.module';
-import { SalesmanComponent } from './salesman/salesman.component';
+import { TourComponent } from './tour/tour.component';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -21,6 +21,7 @@ const PAGES_COMPONENTS = [
   ],
   declarations: [
     ...PAGES_COMPONENTS,
+    TourComponent,
   ],
 })
 export class PagesModule {

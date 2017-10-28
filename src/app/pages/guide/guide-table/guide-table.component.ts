@@ -65,8 +65,8 @@ export class GuideTableComponent  {
 
     this.guideService.list()
       .subscribe( res => {
-          this.guides = res;
-          this.source.load(this.guides);
+        this.guides = res.users;
+        this.source.load(this.guides);
       });
   }
 

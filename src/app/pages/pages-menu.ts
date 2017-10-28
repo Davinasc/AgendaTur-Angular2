@@ -59,11 +59,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Adicionar novo',
-        link: '#',
+        link: '/pages/rotas/novo',
       },
       {
         title: 'Ver todos',
-        link: '#',
+        link: '/pages/rotas/todos',
       },
     ],
   },

@@ -17,6 +17,9 @@ const routes: Routes = [{
     path: 'vendedores',
     loadChildren: './salesman/salesman.module#SalesmanModule',
   }, {
+    path: 'rotas',
+    loadChildren: './route/route.module#RouteModule',
+  }, {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
