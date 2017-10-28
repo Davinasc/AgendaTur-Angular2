@@ -22,6 +22,6 @@ import { RouteTableComponent } from './route-table/route-table.component';
     RouteFormComponent,
     RouteListComponent,
     RouteTableComponent,
-  ]
+  ],
 })
 export class RouteModule { }

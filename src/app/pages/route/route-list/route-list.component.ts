@@ -4,7 +4,7 @@ import { NbThemeService, NbMediaBreakpoint, NbMediaBreakpointsService } from '@n
 @Component({
   selector: 'ngx-route-list',
   templateUrl: './route-list.component.html',
-  styleUrls: ['./route-list.component.scss']
+  styleUrls: ['./route-list.component.scss'],
 })
 export class RouteListComponent implements OnInit {
 

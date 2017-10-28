@@ -10,14 +10,15 @@ import { Route } from './../../../@core/models/route';
 @Component({
   selector: 'ngx-route-form',
   templateUrl: './route-form.component.html',
-  styleUrls: ['./route-form.component.scss']
+  styleUrls: ['./route-form.component.scss'],
 })
-export class RouteFormComponent extends BaseFormComponent implements OnInit{
+
+export class RouteFormComponent extends BaseFormComponent implements OnInit {
 
   routeForm: FormGroup;
   route: Route = new Route();
 
-  constructor(protected fb: FormBuilder,private routeService: RouteService) {
+  constructor(protected fb: FormBuilder, private routeService: RouteService) {
     super(fb);
   }
 

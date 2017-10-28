@@ -7,7 +7,7 @@ import { RouteService } from './../../../@core/data/route.service';
 @Component({
   selector: 'ngx-route-table',
   templateUrl: './route-table.component.html',
-  styleUrls: ['./route-table.component.scss']
+  styleUrls: ['./route-table.component.scss'],
 })
 export class RouteTableComponent {
 
