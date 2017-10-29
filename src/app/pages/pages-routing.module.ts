@@ -20,6 +20,10 @@ const routes: Routes = [{
     path: 'rotas',
     loadChildren: './route/route.module#RouteModule',
   }, {
+    path: 'passeios',
+    loadChildren: './tour/tour.module#TourModule',
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

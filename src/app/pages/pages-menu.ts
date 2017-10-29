@@ -45,11 +45,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Adicionar novo',
-        link: '#',
+        link: '/pages/passeios/novo',
       },
       {
         title: 'Ver todos',
-        link: '#',
+        link: '/pages/passeios/todos',
       },
     ],
   },

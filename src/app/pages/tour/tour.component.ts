@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ngx-tour',
-  templateUrl: './tour.component.html',
-  styleUrls: ['./tour.component.scss'],
+  template: `
+    <router-outlet></router-outlet>
+  `,
 })
 export class TourComponent implements OnInit {
 
