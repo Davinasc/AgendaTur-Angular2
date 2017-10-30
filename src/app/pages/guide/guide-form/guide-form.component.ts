@@ -50,9 +50,13 @@ export class GuideFormComponent extends BaseFormComponent implements OnInit {
   }
 
   saveGuide() {
-    this.prepareSave();
-    this.guideService.save(this.guide).subscribe();
-    this.resetarForm(this.guideForm);
+    if (this.guideForm.valid) {
+      this.prepareSave();
+      this.guideService.save(this.guide).subscribe();
+      this.resetarForm(this.guideForm);
+    } else {
+      this.verificaValidacoesForm(this.guideForm);
+    }
   }
 
 }

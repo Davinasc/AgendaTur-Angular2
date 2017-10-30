@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg-12">
       <nb-card>
-          <nb-card-header>Adicionar Rota de Passeio</nb-card-header>
+          <nb-card-header>Adicionar Passeio</nb-card-header>
           <nb-card-body>
               <form [formGroup]="tourForm">
                 <div class="row">
@@ -9,9 +9,23 @@
 
                     <div class="form-group row">
                       <label for="route" class="col-sm-2 col-form-label">Rota</label>
-                      <div class="col-sm-8">
-                        <input type="text" class="form-control" id="route" placeholder="Digite a rota"
-                        formControlName="route">
+                      <div class="col-sm-10">
+                        <select class="form-control" id="route" formControlName="route_id">
+                          <option *ngFor="let route of routes" [ngValue]="route.id">
+                              {{ route.name }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="guide" class="col-sm-2 col-form-label">Guia</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" id="guide" formControlName="user_id">
+                          <option *ngFor="let guide of guides" [ngValue]="guide.id">
+                              {{ guide.name }}
+                          </option>
+                        </select>
                       </div>
                     </div>
 
@@ -22,9 +36,9 @@
                         formControlName="date">
                       </div>
 
-                      <label for="vacancies" class="col-sm-2 col-form-label text-center">Vagas</label>
+                      <label for="vacancies" class="col-sm-2 col-form-label">Vagas</label>
                       <div class="col-sm-4">
-                        <input type="number" class="form-control" id="vacancies" placeholder="Digite as vagas"
+                        <input type="number" class="form-control" id="vacancies" placeholder="Digite as vagas" min="0"
                         formControlName="vacancies">
                       </div>
                     </div>
@@ -36,7 +50,7 @@
                         formControlName="departure_time">
                       </div>
 
-                      <label for="arrival_time" class="col-sm-2 col-form-label text-center">Chegada</label>
+                      <label for="arrival_time" class="col-sm-2 col-form-label">Chegada</label>
                       <div class="col-sm-4">
                         <input type="time" class="form-control" id="arrival_time" placeholder="Digite as vagas"
                         formControlName="arrival_time">
@@ -53,8 +67,6 @@
                   </div>
                 </div>
               </form>
-              <p>Form value: {{ tourForm.value | json }}</p>
-              <p>Guide value: {{ tour | json }}</p>
           </nb-card-body>
       </nb-card>
   </div>
