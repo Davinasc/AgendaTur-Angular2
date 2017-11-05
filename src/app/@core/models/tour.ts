@@ -2,7 +2,7 @@ import { Route } from './route';
 import { Guide } from './guide';
 
 export class Tour {
-  id: string;
+  id: number;
   date: Date;
   vacancies: number;
   arrival_time: Date;

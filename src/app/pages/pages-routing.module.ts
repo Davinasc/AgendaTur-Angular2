@@ -22,6 +22,9 @@ const routes: Routes = [{
   }, {
     path: 'passeios',
     loadChildren: './tour/tour.module#TourModule',
+  }, {
+    path: 'agendamentos',
+    loadChildren: './scheduling/scheduling.module#SchedulingModule',
   },
   {
     path: '',

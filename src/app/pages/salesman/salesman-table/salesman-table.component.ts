@@ -64,7 +64,7 @@ export class SalesmanTableComponent {
   constructor(private salesmanService: SalesmanService) {
     this.salesmanService.list()
       .subscribe(res => {
-        this.salesmen = res.users;
+        this.salesmen = res.salesmen;
         this.source.load(this.salesmen);
       });
   }

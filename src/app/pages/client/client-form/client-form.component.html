@@ -1,0 +1,44 @@
+<div [formGroup]="clientForm">
+  <div class="form-group row">
+    <label for="name" class="col-md-2 col-form-label">Nome</label>
+    <div class="col-md-8">
+      <input type="text" class="form-control" id="name" placeholder="Digite o nome" formControlName="name">
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label for="email" class="col-md-2 col-form-label">Email</label>
+    <div class="col-md-8">
+      <input type="email" class="form-control" id="email" placeholder="Digite o email" formControlName="email">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="phone" class="col-md-2 col-form-label">Telefone</label>
+    <div class="col-md-8">
+      <input type="text" class="form-control" id="phone" placeholder="Digite o telefone" formControlName="phone">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="hotel" class="col-md-2 col-form-label">Hotel</label>
+    <div class="col-md-8">
+      <input type="text" class="form-control" id="hotel" placeholder="Digite o hotel" formControlName="hotel">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="apartament" class="col-md-2 col-form-label">Nº apt</label>
+    <div class="col-md-4">
+      <input type="number" class="form-control" id="apartament" placeholder="Apartamento" formControlName="apartament">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label">Adulto</label>
+    <div class="col-md-4">
+      <nb-checkbox formControlName="adult"></nb-checkbox>
+    </div>
+  </div>
+</div>

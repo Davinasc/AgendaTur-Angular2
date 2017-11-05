@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-lg-12">
+      <nb-card>
+          <nb-card-header>Adicionar Agendamento</nb-card-header>
+          <nb-card-body>
+              <form [formGroup]="schedulingForm">
+                <div class="row">
+                  <div class="col-sm-8 offset-sm-1">
+
+                    <div class="form-group row">
+                      <label for="tour" class="col-sm-2 col-form-label">Passeio</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" id="tour" formControlName="tour_id">
+                          <option *ngFor="let tour of tours" [ngValue]="tour.id">
+                              {{ tour.route.name }} - {{ tour.date | date:'dd/MMM' }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="salesman" class="col-sm-2 col-form-label">Vendedor</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" id="salesman" formControlName="user_id">
+                          <option *ngFor="let salesman of salesmen" [ngValue]="salesman.id">
+                              {{ salesman.name }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="total_price" class="col-sm-2 col-form-label">Preço Total</label>
+                      <div class="col-sm-4">
+                        <input type="number" class="form-control" id="total_price" placeholder="R$ 99.99" min="0"
+                        formControlName="total_price">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="voucher_price" class="col-sm-2 col-form-label">Voucher</label>
+                      <div class="col-sm-4">
+                        <input type="number" class="form-control" id="voucher_price" placeholder="R$ 99.99"
+                        min="0" [max]="getVoucherMaxValue()" formControlName="voucher_price">
+                      </div>
+
+                      <label class="col-sm-2 col-form-label">A Receber</label>
+                      <div class="col-sm-4">
+                        <input type="number" class="form-control" [value]="getReceivePrice()" placeholder="R$ 0"
+                        formControlName="receive_price" >
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6">
+
+                    <div formArrayName="clients">
+                      <div *ngFor="let client of schedulingForm.get('clients')['controls']; let i=index">
+                        <nb-card>
+                          <nb-card-header>
+                              Cliente
+                              <span *ngIf="schedulingForm.get('clients').length > 1">{{i + 1}}</span>
+                              <span class="ion-close-round pull-right"
+                                    *ngIf="schedulingForm.get('clients').length > 1"
+                                    (click)="removeClient(i)"></span>
+                          </nb-card-header>
+
+                            <nb-card-body>
+                              <div [formGroupName]="i">
+                                <ngx-client-form [group]="schedulingForm.get('clients').controls[i]"></ngx-client-form>
+                              </div>
+                            </nb-card-body>
+
+                        </nb-card>
+                      </div>
+                      <div class="margin-20">
+                        <a (click)="addClient()" style="cursor: default">
+                          Add Client
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-lg-12 offset-lg-6">
+                        <button type="submit" class="btn btn-hero-success btn-sm" (click)="saveScheduling()" >Salvar</button>
+                        <button class="btn btn-hero-secondary btn-sm" (click)="resetarForm(schedulingForm)" >Cancelar</button>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+                  {{ schedulingForm.value | json }}
+              </form>
+            </nb-card-body>
+      </nb-card>
+  </div>
+</div>

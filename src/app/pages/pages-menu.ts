@@ -40,6 +40,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Agendamentos',
+    icon: 'nb-compose',
+    children: [
+      {
+        title: 'Adicionar novo',
+        link: '/pages/agendamentos/novo',
+      },
+      {
+        title: 'Ver todos',
+        link: '/pages/agendamentos/todos',
+      },
+    ],
+  },
+  {
     title: 'Passeios',
     icon: 'ion-android-bus',
     children: [

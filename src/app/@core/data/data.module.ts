@@ -11,6 +11,7 @@ import { GuideService } from './guide.service';
 import { SalesmanService } from './salesman.service';
 import { RouteService } from './route.service';
 import { TourService } from './tour.service';
+import { SchedulingService } from './scheduling.service';
 
 const SERVICES = [
   UserService,
@@ -22,6 +23,7 @@ const SERVICES = [
   SalesmanService,
   RouteService,
   TourService,
+  SchedulingService,
 ];
 
 @NgModule({
