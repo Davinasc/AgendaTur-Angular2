@@ -51,7 +51,12 @@ export class SalesmanFormComponent extends BaseFormComponent implements OnInit {
 
   saveSalesman() {
     this.prepareSave();
-    this.salesmanService.save(this.salesman).subscribe(res => res);
-    this.resetarForm(this.salesmanForm);
+    if (this.salesmanForm.valid) {
+      this.salesmanService.save(this.salesman).subscribe();
+      super.resetarForm(this.salesmanForm);
+    } else {
+      super.verificaValidacoesForm(this.salesmanForm);
+    }
+    super.resetarForm(this.salesmanForm);
   }
 }

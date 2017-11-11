@@ -23,8 +23,7 @@ export class BaseFormComponent implements OnInit {
 
   aplicaCssErro(form: FormGroup, campo: string) {
     return {
-      'form-control-danger': this.verificaValidTouched(form, campo),
-      '.form-control-success': this.verificaValidTouched(form, campo),
+      'form-control-danger': this.verificaValidTouched(form, campo)
     };
   }
 

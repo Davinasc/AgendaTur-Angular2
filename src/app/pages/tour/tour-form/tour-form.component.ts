@@ -41,7 +41,7 @@ export class TourFormComponent extends BaseFormComponent implements OnInit {
     .subscribe(res => this.routes = res.routes);
 
     this.guideService.list()
-    .subscribe( res => this.guides = res.users);
+    .subscribe( res => this.guides = res.guides);
   }
 
   ngOnInit() {
@@ -77,8 +77,12 @@ export class TourFormComponent extends BaseFormComponent implements OnInit {
 
   saveTour() {
     this.prepareSave();
-    this.tourService.save(this.tour).subscribe();
-    this.resetarForm(this.tourForm);
+    if (this.tourForm.valid) {
+      this.tourService.save(this.tour).subscribe();
+      super.resetarForm(this.tourForm);
+    } else {
+      super.verificaValidacoesForm(this.tourForm);
+    }
+    super.resetarForm(this.tourForm);
   }
-
 }

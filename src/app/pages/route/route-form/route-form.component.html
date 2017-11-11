@@ -3,7 +3,7 @@
       <nb-card>
           <nb-card-header>Adicionar Rota de Passeio</nb-card-header>
           <nb-card-body>
-              <form [formGroup]="routeForm">
+              <form [formGroup]="routeForm" (ngSubmit)="saveRoute()">
                 <div class="row">
                   <div class="col-sm-8 offset-sm-1">
 
@@ -11,7 +11,7 @@
                       <label for="name" class="col-sm-2 col-form-label">Nome</label>
                       <div class="col-sm-8">
                         <input type="text" class="form-control" id="name" placeholder="Digite a rota"
-                        formControlName="name">
+                        formControlName="name" [ngClass]="aplicaCssErro(routeForm, 'name')">
                       </div>
                     </div>
 
@@ -19,13 +19,13 @@
                       <label for="price" class="col-sm-2 col-form-label">Preço</label>
                       <div class="col-sm-4">
                         <input type="number" class="form-control" id="price" placeholder="Digite o preço" min="0"
-                        formControlName="price">
+                        formControlName="price" [ngClass]="aplicaCssErro(routeForm, 'price')">
                       </div>
                     </div>
 
                     <div class="form-group row">
                       <div class="col-lg-12 offset-md-2">
-                        <button type="submit" class="btn btn-hero-success btn-sm" (click)="saveRoute()" >Salvar</button>
+                        <button type="submit" class="btn btn-hero-success btn-sm">Salvar</button>
                         <button class="btn btn-hero-secondary btn-sm" (click)="resetarForm(routeForm)" >Cancelar</button>
                       </div>
                     </div>

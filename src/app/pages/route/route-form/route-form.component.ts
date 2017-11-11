@@ -16,7 +16,7 @@ import { Route } from './../../../@core/models/route';
 export class RouteFormComponent extends BaseFormComponent implements OnInit {
 
   routeForm: FormGroup;
-  route: Route = new Route();
+  route: Route
 
   constructor(protected fb: FormBuilder, private routeService: RouteService) {
     super(fb);
@@ -47,8 +47,12 @@ export class RouteFormComponent extends BaseFormComponent implements OnInit {
 
   saveRoute() {
     this.prepareSave();
-    this.routeService.save(this.route).subscribe();
-    this.resetarForm(this.routeForm);
+    if (this.routeForm.valid) {
+      this.routeService.save(this.route).subscribe();
+    } else {
+      super.verificaValidacoesForm(this.routeForm);
+    }
+    super.resetarForm(this.routeForm);
   }
 
 }

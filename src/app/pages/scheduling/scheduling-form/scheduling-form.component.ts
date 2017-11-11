@@ -90,9 +90,13 @@ export class SchedulingFormComponent extends BaseFormComponent implements OnInit
   }
 
   saveScheduling() {
-    this.prepareSave();
-    this.schedulingService.save(this.scheduling).subscribe();
-    this.resetarForm(this.schedulingForm);
+    if (this.schedulingForm.valid) {
+      this.prepareSave();
+      this.schedulingService.save(this.scheduling).subscribe();
+      super.resetarForm(this.schedulingForm);
+    } else {
+      super.verificaValidacoesForm(this.schedulingForm);
+    }
   }
 
   getReceivePrice() {
