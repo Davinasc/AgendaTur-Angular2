@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ThemeModule } from './../../@theme/theme.module';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
+import { ToasterModule } from 'angular2-toaster';
+
 import { SalesmanRoutingModule } from './salesman-routing.module';
 import { SalesmanComponent } from './salesman.component';
 import { SalesmanFormComponent } from './salesman-form/salesman-form.component';
@@ -16,6 +18,7 @@ import { SalesmanListComponent } from './salesman-list/salesman-list.component';
     SalesmanRoutingModule,
     ThemeModule,
     Ng2SmartTableModule,
+    ToasterModule,
   ],
   declarations: [
     SalesmanComponent,

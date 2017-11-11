@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
-import { BaseFormComponent } from './../../base/base-form/base-form.component';
+import { ToasterService } from 'angular2-toaster';
 
+import { BaseFormComponent } from './../../base/base-form/base-form.component';
 import { Salesman } from './../../../@core/models/salesman';
 import { SalesmanService } from './../../../@core/data/salesman.service';
 
@@ -14,11 +15,14 @@ import { SalesmanService } from './../../../@core/data/salesman.service';
 })
 export class SalesmanFormComponent extends BaseFormComponent implements OnInit {
 
+  title: string = 'Vendedor'
   salesman: Salesman = new Salesman();
   salesmanForm: FormGroup;
 
-  constructor(protected fb: FormBuilder, private salesmanService: SalesmanService) {
-    super(fb);
+  constructor(protected fb: FormBuilder,
+    private ts: ToasterService,
+    private salesmanService: SalesmanService) {
+    super(fb,ts);
   }
 
   ngOnInit() {
@@ -50,13 +54,18 @@ export class SalesmanFormComponent extends BaseFormComponent implements OnInit {
   }
 
   saveSalesman() {
-    this.prepareSave();
     if (this.salesmanForm.valid) {
+      this.prepareSave();
       this.salesmanService.save(this.salesman).subscribe();
+      this.notify('success', '', `${this.title} ${super.successMessage()}`);
       super.resetarForm(this.salesmanForm);
     } else {
       super.verificaValidacoesForm(this.salesmanForm);
+      this.notify('error', '', `${super.errorMessage()} ${this.title}`);
     }
-    super.resetarForm(this.salesmanForm);
+  }
+
+  notify(type: string, title: string, body: string) {
+    this.ts.popAsync(super.notifyUser(type, title, body));
   }
 }

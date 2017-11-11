@@ -4,8 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import 'rxjs/Rx';
 
-import { BaseFormComponent } from './../../base/base-form/base-form.component';
+import { ToasterService } from 'angular2-toaster';
 
+import { BaseFormComponent } from './../../base/base-form/base-form.component';
 import { TourService } from './../../../@core/data/tour.service';
 import { RouteService } from './../../../@core/data/route.service';
 import { GuideService } from './../../../@core/data/guide.service';
@@ -21,6 +22,7 @@ import { Route } from './../../../@core/models/route';
 })
 export class TourFormComponent extends BaseFormComponent implements OnInit {
 
+  title: string = 'Passeio';
   tourForm: FormGroup;
   tour: Tour = new Tour();
   routes = [];
@@ -28,20 +30,21 @@ export class TourFormComponent extends BaseFormComponent implements OnInit {
 
   constructor(
     protected fb: FormBuilder,
+    protected ts: ToasterService,
     private tourService: TourService,
     private routeService: RouteService,
     private guideService: GuideService,
     ) {
+      super(fb,ts);
 
-    super(fb);
-    this.tour.route = new Route()
-    this.tour.guide = new Guide();
+      this.tour.route = new Route()
+      this.tour.guide = new Guide();
 
-    this.routeService.list()
-    .subscribe(res => this.routes = res.routes);
+      this.routeService.list()
+      .subscribe(res => this.routes = res.routes);
 
-    this.guideService.list()
-    .subscribe( res => this.guides = res.guides);
+      this.guideService.list()
+      .subscribe( res => this.guides = res.guides);
   }
 
   ngOnInit() {
@@ -76,13 +79,20 @@ export class TourFormComponent extends BaseFormComponent implements OnInit {
   }
 
   saveTour() {
-    this.prepareSave();
     if (this.tourForm.valid) {
+      this.prepareSave();
       this.tourService.save(this.tour).subscribe();
+      this.notify('success', '', `${this.title} ${super.successMessage()}`);
       super.resetarForm(this.tourForm);
     } else {
       super.verificaValidacoesForm(this.tourForm);
     }
     super.resetarForm(this.tourForm);
+    this.notify('error', '', `${super.errorMessage()} ${this.title}`);
   }
+
+  notify(type: string, title: string, body: string) {
+    this.ts.popAsync(super.notifyUser(type, title, body));
+  }
+
 }

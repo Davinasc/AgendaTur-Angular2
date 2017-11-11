@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import 'rxjs/Rx';
 
+import { ToasterService } from 'angular2-toaster';
+
 import { BaseFormComponent } from './../../base/base-form/base-form.component';
 import { RouteService } from './../../../@core/data/route.service';
 import { Route } from './../../../@core/models/route';
@@ -15,11 +17,14 @@ import { Route } from './../../../@core/models/route';
 
 export class RouteFormComponent extends BaseFormComponent implements OnInit {
 
+  title: string = 'Rota';
   routeForm: FormGroup;
-  route: Route
+  route: Route = new Route();
 
-  constructor(protected fb: FormBuilder, private routeService: RouteService) {
-    super(fb);
+  constructor(protected fb: FormBuilder,
+    private ts: ToasterService,
+    private routeService: RouteService) {
+    super(fb, ts);
   }
 
   ngOnInit() {
@@ -46,13 +51,19 @@ export class RouteFormComponent extends BaseFormComponent implements OnInit {
   }
 
   saveRoute() {
-    this.prepareSave();
     if (this.routeForm.valid) {
+      this.prepareSave();
       this.routeService.save(this.route).subscribe();
+      this.notify('success', '', `${this.title} ${super.successMessage()}`);
+      super.resetarForm(this.routeForm);
     } else {
       super.verificaValidacoesForm(this.routeForm);
+      this.notify('error', '', `${super.errorMessage()} ${this.title}`);
     }
-    super.resetarForm(this.routeForm);
+  }
+
+  notify(type: string, title: string, body: string) {
+    this.ts.popAsync(super.notifyUser(type, title, body));
   }
 
 }

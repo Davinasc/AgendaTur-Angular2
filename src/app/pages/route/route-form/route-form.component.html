@@ -1,9 +1,10 @@
 <div class="row">
   <div class="col-lg-12">
       <nb-card>
+          <toaster-container [toasterconfig]="toastConfig"></toaster-container>
           <nb-card-header>Adicionar Rota de Passeio</nb-card-header>
           <nb-card-body>
-              <form [formGroup]="routeForm" (ngSubmit)="saveRoute()">
+              <form [formGroup]="routeForm">
                 <div class="row">
                   <div class="col-sm-8 offset-sm-1">
 
@@ -25,11 +26,10 @@
 
                     <div class="form-group row">
                       <div class="col-lg-12 offset-md-2">
-                        <button type="submit" class="btn btn-hero-success btn-sm">Salvar</button>
-                        <button class="btn btn-hero-secondary btn-sm" (click)="resetarForm(routeForm)" >Cancelar</button>
+                        <button type="submit" class="btn btn-hero-success btn-sm" (click)="saveRoute()">Salvar</button>
+                        <button class="btn btn-hero-secondary btn-sm" (click)="resetarForm(routeForm)">Cancelar</button>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </form>

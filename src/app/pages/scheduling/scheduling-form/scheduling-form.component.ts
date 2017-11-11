@@ -4,8 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
 import 'rxjs/Rx';
 
-import { BaseFormComponent } from './../../base/base-form/base-form.component';
+import { ToasterService } from 'angular2-toaster';
 
+import { BaseFormComponent } from './../../base/base-form/base-form.component';
 import { SchedulingService } from './../../../@core/data/scheduling.service';
 import { TourService } from './../../../@core/data/tour.service';
 import { SalesmanService } from './../../../@core/data/salesman.service';
@@ -22,6 +23,7 @@ import { Client } from './../../../@core/models/client';
 })
 export class SchedulingFormComponent extends BaseFormComponent implements OnInit {
 
+  title: string = 'Agendamento';
   schedulingForm: FormGroup;
   scheduling: Scheduling = new Scheduling();
   tours = [];
@@ -29,11 +31,12 @@ export class SchedulingFormComponent extends BaseFormComponent implements OnInit
 
   constructor(
     protected fb: FormBuilder,
+    protected ts: ToasterService,
     private schedulingService: SchedulingService,
     private tourService: TourService,
     private salesmanService: SalesmanService
   ) {
-    super(fb);
+    super(fb, ts);
     this.scheduling.tour = new Tour();
     this.scheduling.salesman = new Salesman();
     this.scheduling.clients = [];
@@ -93,10 +96,16 @@ export class SchedulingFormComponent extends BaseFormComponent implements OnInit
     if (this.schedulingForm.valid) {
       this.prepareSave();
       this.schedulingService.save(this.scheduling).subscribe();
+      this.notify('success', '', `${this.title} ${super.successMessage()}`);
       super.resetarForm(this.schedulingForm);
     } else {
       super.verificaValidacoesForm(this.schedulingForm);
+      this.notify('error', '', `${super.errorMessage()} ${this.title}`);
     }
+  }
+
+  notify(type: string, title: string, body: string) {
+    this.ts.popAsync(super.notifyUser(type, title, body));
   }
 
   getReceivePrice() {

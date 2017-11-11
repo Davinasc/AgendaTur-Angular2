@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
+
+import { ToasterService, ToasterConfig, Toast, BodyOutputType } from 'angular2-toaster';
+import 'style-loader!angular2-toaster/toaster.css';
+
 @Component({
   selector: 'ngx-base-form',
   templateUrl: './base-form.component.html',
@@ -8,7 +12,9 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class BaseFormComponent implements OnInit {
 
-  constructor(protected fb: FormBuilder) {  }
+  toastConfig: ToasterConfig;
+
+  constructor(protected fb: FormBuilder, private toasterService: ToasterService) {  }
 
   ngOnInit() {
   }
@@ -47,4 +53,32 @@ export class BaseFormComponent implements OnInit {
     return form;
   }
 
+  protected notifyUser(type: string, title: string, body: string) {
+    this.toastConfig = new ToasterConfig({
+      positionClass: 'toast-top-right',
+      timeout: 5000,
+      newestOnTop: true,
+      tapToDismiss: true,
+      preventDuplicates: true,
+      animation: 'flyLeft',
+      limit: 3,
+    });
+    const toast: Toast = {
+      type: type,
+      title: title,
+      body: body,
+      timeout: 5000,
+      showCloseButton: true,
+      bodyOutputType: BodyOutputType.TrustedHtml,
+    };
+    return toast;
+  }
+
+  protected errorMessage() {
+    return 'Não foi possível adicionar';
+  }
+
+  protected successMessage() {
+    return 'adicionado!';
+  }
 }

@@ -1,9 +1,10 @@
 <div class="row">
   <div class="col-lg-12">
       <nb-card>
+          <toaster-container [toasterconfig]="toastConfig"></toaster-container>
           <nb-card-header>Adicionar Agendamento</nb-card-header>
           <nb-card-body>
-              <form [formGroup]="schedulingForm" (ngSubmit)="saveScheduling()">
+              <form [formGroup]="schedulingForm">
                 <div class="row">
                   <div class="col-sm-8 offset-sm-1">
 
@@ -85,15 +86,12 @@
 
                     <div class="form-group row">
                       <div class="col-lg-12 offset-lg-6">
-                        <button type="submit" class="btn btn-hero-success btn-sm">Salvar</button>
+                        <button type="submit" class="btn btn-hero-success btn-sm" (click)="saveScheduling()">Salvar</button>
                         <button class="btn btn-hero-secondary btn-sm" (click)="resetarForm(schedulingForm)" >Cancelar</button>
                       </div>
                     </div>
-
                   </div>
-
                 </div>
-                  {{ schedulingForm.value | json }}
               </form>
             </nb-card-body>
       </nb-card>
