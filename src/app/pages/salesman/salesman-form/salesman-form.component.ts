@@ -32,9 +32,6 @@ export class SalesmanFormComponent extends BaseFormComponent implements OnInit {
 
   criarSalesmanForm() {
     this.salesmanForm = super.criarUserForm(this.salesmanForm);
-    this.salesmanForm.addControl(
-      'comission',
-      new FormControl(null, Validators.required));
   }
 
   iniciarForm() {

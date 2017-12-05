@@ -4,14 +4,10 @@ import { AngularEchartsModule } from 'ngx-echarts';
 import { ThemeModule } from '../../@theme/theme.module';
 import { DashboardComponent } from './dashboard.component';
 
-import { AnalyticsModule } from './../analytics/analytics.module';
-
-
 @NgModule({
   imports: [
     ThemeModule,
-    AngularEchartsModule,
-    AnalyticsModule,
+    AngularEchartsModule
   ],
   declarations: [
     DashboardComponent,
